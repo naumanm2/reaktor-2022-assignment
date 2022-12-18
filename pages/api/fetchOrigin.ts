@@ -2,7 +2,7 @@
 import * as convert from "xml-js";
 import type { NextApiRequest, NextApiResponse } from "next";
 
-import { Drone, DroneFlyer, Personal } from "../../types/typings";
+import { Drone, Personal } from "../../types/typings";
 
 type Data = {
   result: Personal[];
@@ -22,10 +22,6 @@ function checkLiability(drone: Drone): number {
   function raiseTo2(x: number): number {
     return Math.pow(x, 2);
   }
-  //   console.log(`x location: ${x}, y location: ${y}`);
-  //   console.log("////");
-  //   console.log(Math.sqrt(raiseTo2(x - illegalX) + raiseTo2(y - illegalY)));
-
   return Math.sqrt(raiseTo2(illegalX - x) + raiseTo2(illegalY - y));
 }
 
@@ -37,17 +33,18 @@ async function fugitiveList(drones: Drone[]) {
         `https://assignments.reaktor.com/birdnest/pilots/${drone.serialNumber._text}`
       );
       const res = await details.json();
-      //   console.log(res);
       const result: Personal = {
         ...res,
-        ...{ createdAt: Date.now(), minimumDistance: checkLiability(drone) },
+        ...{
+          createdAt: new Date(),
+          minimumDistance: checkLiability(drone),
+        },
       };
       return result;
     } catch (error) {
       throw new Error("could not find flyer");
     }
   });
-  //   console.log(`fugitives: ${fugitives}`);
   return Promise.all(result);
 }
 
@@ -69,8 +66,6 @@ export default async function handler(
   /* @ts-ignore */
   const drones: Drone[] = xml2json.report.capture.drone;
   //purge list to contain just baddies
-  //   const violators: Drone[] = drones.filter((drone) => checkLiability(drone));
   const result = await fugitiveList(drones);
-  //   console.log(result);
   res.status(200).json({ result });
 }

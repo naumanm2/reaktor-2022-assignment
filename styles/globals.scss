@@ -1,18 +1,76 @@
 
-//global variables
+//global vai
 $primary-color: #000000;
 $secondary-color: #faf;
 
+@import url("https://use.typekit.net/twz3utw.css");
+
 body {
-    
+    font-family: neue-haas-grotesk-text, sans-serif;
 }
 
-h1 {
-    font-size: 4em;   
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+
 }
+
 .container {
-    max-width: 1440px;
+    max-width: 776px;
 }
 
+.single-drone-card {
+    max-width: 440px;
+    border-bottom: 1px solid #dddddd;
+    border-radius: 3px;
+    margin: auto;
+    padding: 16px 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    // box-shadow: 0 0 0.75rem rgba(255,170,255, 0.2);
+    transition:cubic-bezier(0.6, -0.28, 0.735, 0.045)
+    // filter: drop-shadow(0 0 0.75rem);
+}
 
+.upper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.middle {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.lower {
+    display: flex;
+    justify-content: space-between;
+}
+
+.inner {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.lower .inner .label {
+    font-size: 0.6em;
+    color: #acacac;
+    margin-right: 4px;
+}
+
+.phonenumber {
+    color:#666666;
+}
+
+time {
+    font-size: 1.1em;
+}
+
+h6 {
+    font-size: .7em;
+    color: #acacac;
+    margin: 0;
+}
 

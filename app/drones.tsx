@@ -6,7 +6,7 @@ import fetcher from "../utils/fetcher";
 
 import Flyer from "./Node/flyer";
 
-import { Drone, Personal } from "../types/typings";
+import { Personal } from "../types/typings";
 
 const Drones = () => {
   const [baddies, setBaddies] = useState<Personal[]>([]);
@@ -19,15 +19,13 @@ const Drones = () => {
       setBaddies(data.data);
     }
   }, [data]);
-  // console.log(`baddies: ${baddies}`);
-  //   console.log(data);
-  //   setAllBaddies([...data, ...allBaddies])
-
-  //   setBaddies(data?);
   return (
     <>
       {baddies.length > 0 &&
-        baddies.map((flyer) => <Flyer key={flyer.pilotId} flyer={flyer} />)}
+        baddies.map((flyer, i) => <Flyer 
+        key={flyer.pilotId} 
+        flyer={flyer}
+        index={i} />)}
     </>
   );
 };
