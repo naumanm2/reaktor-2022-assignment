@@ -3,7 +3,6 @@
 import React from 'react'
 
 const Flyer = ({ index, flyer }: any) => {
-  console.log(`flyer: ${JSON.stringify(flyer)}`);
   const date = new Date(flyer.createdAt);
   const hours = date.getHours();
   const minutes = ("0" + date.getMinutes()).slice(-2);
