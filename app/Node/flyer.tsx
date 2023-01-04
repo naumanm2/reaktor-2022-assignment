@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
-import { Personal } from "../../types/typings";
+import React from 'react'
 
 const Flyer = ({ index, flyer }: any) => {
   console.log(`flyer: ${JSON.stringify(flyer)}`);
@@ -10,9 +9,6 @@ const Flyer = ({ index, flyer }: any) => {
   const minutes = ("0" + date.getMinutes()).slice(-2);
   return (
     <div className="single-drone-card">
-      {/* <div className="upper">
-        <h6>{index}</h6>
-      </div> */}
       <div className="middle">
         <div className="name">
           <h2>

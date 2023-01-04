@@ -7,7 +7,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const client = await clientPromise;
     const db = client.db("drones");
-
+    // updates object through _id; if not found, create new instance
     const drone = await db.collection("drones").updateOne(
       { _id: body.pilotId as any },
       {

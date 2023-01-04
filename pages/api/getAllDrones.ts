@@ -6,7 +6,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const client = await clientPromise;
     const db = client.db("drones");
     // push flyer information to db
-
     const drones = await db.collection("drones").find({}).toArray();
     await db.collection("drones").createIndex({createdAt: 1}, {expireAfterSeconds: 600})
     res.json({
