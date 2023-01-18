@@ -19,13 +19,22 @@ const Drones = () => {
       setBaddies(data.data);
     }
   }, [data]);
+
   return (
     <>
-      {baddies.length > 0 &&
-        baddies.map((flyer, i) => <Flyer 
-        key={flyer.pilotId} 
-        flyer={flyer}
-        index={i} />)}
+      {!data && (
+        <div className="loading">
+          pls wait while db warms up
+        </div>
+      )}
+      {data &&
+        baddies.map((flyer, i) => (
+          <Flyer
+            key={flyer.pilotId}
+            flyer={flyer}
+            index={i}
+          />
+        ))}
     </>
   );
 };
