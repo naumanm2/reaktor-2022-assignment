@@ -3,8 +3,9 @@
 import React, { useEffect, useState } from "react";
 import useSWR from "swr";
 import fetcher from "../utils/fetcher";
-
 import Flyer from "./Node/flyer";
+
+import Loader from "../svg/loader.svg";
 
 import { Personal } from "../types/typings";
 
@@ -22,11 +23,7 @@ const Drones = () => {
 
   return (
     <>
-      {!data && (
-        <div className="loading">
-          pls wait while db warms up
-        </div>
-      )}
+      {!data && <div className="loading">loading...</div>}
       {data &&
         baddies.map((flyer, i) => (
           <Flyer
